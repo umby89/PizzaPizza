@@ -12,6 +12,9 @@ namespace PizzaPizza
         public static int j { get; private set; }
         public static int numeroGiri { get; private set; }
         public static int ciclo { get; private set; }
+        public static int valore { get; private set; }
+        public static int maxValore { get; private set; }
+        public static string stringaIndici { get; private set; }
 
         static void Main(string[] args)
         {
@@ -47,10 +50,11 @@ namespace PizzaPizza
                         }
                         else
                         {
-                            bestValue.Add((somma - arrayInt[j]).ToString()+":Valore");
+                            bestValue.Add((somma - arrayInt[j]).ToString());
                             if (somma - arrayInt[j] == obiettivo)
                             {
                                 trovaIlMassimo(bestValue);
+                                break;
                             }
                             j = ciclo++;
                             somma = arrayInt[i];
@@ -67,12 +71,37 @@ namespace PizzaPizza
                     trovaIlMassimo(bestValue);
                 }
             }
-
         }
-
         private static void trovaIlMassimo(List<string> bestValue)
         {
-            throw new NotImplementedException();
+            for (int z = 0; z < bestValue.Count; z++)
+            {
+                if (!bestValue[z].Contains("Indice"))
+                {
+                    valore = Convert.ToInt32(bestValue[z]);
+                    if (valore > maxValore)
+                        maxValore = valore;
+                }
+            }
+
+            for (int x = bestValue.Count-1; x > 0; x--)
+            {
+                if (bestValue[x].Contains(maxValore.ToString()))
+                {
+                    for (int y = x; y > 0; y--)
+                    {
+                        if (bestValue[y-1].Contains("Indice"))
+                        {
+                            stringaIndici = stringaIndici + "-" + bestValue[y-1];
+                        }
+                        else
+                        {
+                            y = 0;
+                        }
+                    }
+                }
+                //Gestione stringe indici per trovare i valori che compongono il valore max
+            }
         }
     }
 }

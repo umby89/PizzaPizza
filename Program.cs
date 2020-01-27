@@ -55,7 +55,6 @@ namespace PizzaPizza
                             j = ciclo++;
                             somma = arrayInt[i];
                             bestValue.Add(i.ToString() + "-Indice");
-
                         }
                     }
                 }      

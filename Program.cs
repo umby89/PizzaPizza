@@ -43,6 +43,11 @@ namespace PizzaPizza
                         if (sum <= maxSlice)
                         {
                             bestValue.Add(j.ToString() + "-Indice");
+                            if (j+1 == pizzaValue.Length)
+                            {
+                                bestValue.Add(sum.ToString());
+                                break;
+                            }
                         }
                         else
                         {
@@ -62,10 +67,11 @@ namespace PizzaPizza
                 {
                     j = pizzaValue.Length;
                 }
-                if(i+1 == pizzaValue.Length)
-                {
-                    findMax(bestValue);
-                }
+              
+            }
+            if (i == pizzaValue.Length)
+            {
+                findMax(bestValue);
             }
         }
 
@@ -98,10 +104,11 @@ namespace PizzaPizza
                         }
                     }
                 }
-                stringOfIndex = stringOfIndex.Replace("Indice", "/").Replace("-", "");
-                listOfIndex = stringOfIndex.Split('/'); // INDICI per ottenere il massimo risultato
-                //Gestione stringe indici per trovare i valori che compongono il valore max
+               
             }
+            stringOfIndex = stringOfIndex.Replace("Indice", "/").Replace("-", "");
+            listOfIndex = stringOfIndex.Split('/'); // INDICI per ottenere il massimo risultato
+                                                    //Gestione stringe indici per trovare i valori che compongono il valore max
         }
     }
 }
